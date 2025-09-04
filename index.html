@@ -3,37 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Can Ortanç — Portfolio</title>
-  <meta name="description" content="Can Ortanç | 10. sınıf öğrencisi — yazılım, web ve tasarım projeleri." />
+  <title>Ege Mert OK — Portfolio</title>
+  <meta name="description" content="Ege Mert OK | Hisar Okulları 10. sınıf — AP CS, Python, web ve tasarım projeleri." />
   <style>
-    :root{ --bg:#ffffff; --text:#111; --link:#0b5ed7; --muted:#666; --border:#ddd; }
+    :root{
+      --bg:#ffffff; --text:#121212; --link:#2563eb; --muted:#6b7280; --border:#e5e7eb;
+      --card:#fafafa;
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
-    header,main,footer{max-width:900px;margin:0 auto;padding:12px 16px}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    header,main,footer{max-width:920px;margin:0 auto;padding:14px 18px}
     header{border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
     nav a{margin-right:12px;text-decoration:none;color:var(--link);font-weight:bold}
     nav a[aria-current="page"]{text-decoration:underline}
-    h1{font-size:24px;margin:0}
-    h2{font-size:20px;margin:0 0 8px}
-    .page{display:none;padding:16px 0;border-bottom:1px solid var(--border)}
+    h1,h2,h3{margin:0 0 8px}
+    h1{font-size:24px}
+    h2{font-size:20px}
+    .page{display:none;padding:18px 0;border-bottom:1px solid var(--border)}
     .page:last-of-type{border-bottom:0}
     .muted{color:var(--muted)}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-    .card{border:1px solid var(--border);border-radius:8px;padding:12px}
+    .card{border:1px solid var(--border);border-radius:10px;padding:12px;background:var(--card)}
     .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .links a{border:1px solid var(--border);padding:6px 10px;text-decoration:none;color:var(--link);border-radius:4px;font-size:14px}
+    .links a{border:1px solid var(--border);padding:6px 10px;text-decoration:none;color:var(--link);border-radius:6px;font-size:14px;background:#fff}
     .video-container{max-width:700px;width:100%;margin:10px 0 20px}
-    .video-container video{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:6px}
-    /* iframe için stil */
-    .video-container iframe{width:100%;height:394px;display:block;border:1px solid var(--border);border-radius:6px}
-    img{max-width:100%;border:1px solid var(--border);border-radius:6px;margin-top:10px}
+    .video-container video,.video-container iframe{width:100%;height:394px;display:block;border:1px solid var(--border);border-radius:8px}
+    img{max-width:100%;border:1px solid var(--border);border-radius:8px;margin-top:10px}
     footer{border-top:1px solid var(--border);margin-top:24px;padding-top:16px;font-size:14px}
     hr{border:none;border-top:1px solid var(--border);margin:16px 0}
   </style>
 </head>
 <body>
   <header>
-    <div><strong>Can Ortanç</strong></div>
+    <div><strong>Ege Mert OK</strong></div>
     <nav aria-label="Primary">
       <a href="#home" id="nav-home">Home</a>
       <a href="#projects" id="nav-projects">Projects</a>
@@ -44,88 +46,97 @@
 
   <main>
     <!-- HOME -->
-    <section id="home" class="page" data-title="Home — Can Ortanç">
+    <section id="home" class="page" data-title="Home — Ege Mert OK">
       <h2>Home</h2>
-      <p class="muted">10. sınıf öğrencisi · Python / Web · Tasarım ve bilim meraklısı</p>
-      <p>Hi! I’m Can. I love working on software, design, and science. I develop projects in Python, maintain this portfolio on GitHub Pages, and I care a lot about learning new things. I’m drawn to ideas with social impact—especially around security and accessibility.</p>
+      <p class="muted">Türkiye · Hisar Okulları · 10. sınıf · AP CS</p>
+      <p>Merhaba! Ben Ege. Yazılım, web ve tasarıma ilgi duyuyorum. Python ile projeler geliştiriyorum, GitHub Pages üzerinde bu portfolyoyu sürdürüyorum ve yeni şeyler öğrenmeyi seviyorum. Güvenlik ve erişilebilirlik gibi sosyal etkisi olan fikirlere özellikle ilgi duyuyorum. Şu anda <strong>AP Computer Science</strong>’a başladım ve temellerden ileri konulara doğru ilerliyorum.</p>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="page" data-title="Projects — Can Ortanç">
+    <section id="projects" class="page" data-title="Projects — Ege Mert OK">
       <h2>Projects</h2>
       <div class="grid">
         <article class="card">
           <h3>Scratch Tic-Tac-Toe</h3>
-          <p>The tic-tac-toe game that i did in Scratch.</p>
+          <p>Scratch ile yaptığım basit bir X-O oyunu. Kazananı kontrol eden mantık ve temel arayüz içerir.</p>
           <div class="links">
-            <a href="https://scratch.mit.edu/projects/1212433117/" target="_blank" rel="noopener">Play on Scratch</a>
+            <a href="#" target="_blank" rel="noopener">Scratch’te Oyna</a>
+            <a href="#" target="_blank" rel="noopener">Kod / Notlar</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Python Number Guess</h3>
+          <p>Terminal tabanlı sayı tahmin oyunu (Python). Geri bildirimlerle seviye atlayan zorluk.</p>
+          <div class="links">
+            <a href="#" target="_blank" rel="noopener">GitHub Repo</a>
           </div>
         </article>
       </div>
     </section>
 
     <!-- BIG IDEAS -->
-    <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
+    <section id="big-ideas" class="page" data-title="Big Ideas — Ege Mert OK">
       <h2>Big Idea 1 — Creative Development</h2>
 
       <article class="card">
         <p>
-          In this unit, I learned to turn an idea into a working program by planning, testing, showing, and explaining my design.  
-          I took notes and screenshots as documentation and made a short narration to show how the program works and why I built it.
+          Bu ünitede bir fikri çalışır bir programa dönüştürmek için planlama, test etme, gösterme ve tasarımı açıklama
+          süreçlerini uyguladım. Dokümantasyon için notlar ve ekran görüntüleri aldım; programın amacı ve çalışma şeklini
+          kısa bir anlatımla özetledim.
         </p>
 
         <ul>
-          <li><strong>1.1 Collaboration:</strong> We used teamwork to split tasks and problem solving to block each other to dont get bugs.</li>
-          <li><strong>1.2 Program Design & Development:</strong> I have developed simple algorithms, drafted pseudocode, and used debugging techniques such as print checks and step-by-step tests to help refine the behavior.</li>
-          <li><strong>1.3 Program Function & Purpose:</strong> Set a clear goal and identified the target audience, organized the input and output processes, grouped the logic into functions and procedures, and documented everything carefully so that others can easily understand and reuse the work.</li>
-          <li><strong>1.4 Identifying & Correcting Errors:</strong> Wrote small tests, tried edge cases, and added basic error handling to avoid crashes or invalid inputs incode.</li>
+          <li><strong>1.1 Collaboration:</strong> Ekip içinde görevleri paylaştırdık; birbirimizi bloklamadan ilerlemek için iletişim ve temel sürüm kontrolü kullandık.</li>
+          <li><strong>1.2 Program Design & Development:</strong> Basit algoritmalar ve sözde kod (pseudocode) yazdım; adım adım test ve <code>print</code> kontrolleriyle davranışı iyileştirdim.</li>
+          <li><strong>1.3 Program Function & Purpose:</strong> Hedefi ve kitleyi belirledim; girdi-çıktı akışını düzenledim; mantığı fonksiyonlara böldüm ve yeniden kullanım için notladım.</li>
+          <li><strong>1.4 Identifying & Correcting Errors:</strong> Küçük testler yazdım, uç durumları denedim ve basit hata yakalama ekleyerek çökme/yanlış girdi durumlarını azalttım.</li>
         </ul>
 
         <p class="muted">
-          <strong>4-minute narration:</strong> a short screen-recording that summarizes the purpose, key features, and 
-          one example of debugging. (See the video below.)
+          <strong>4 dakikalık anlatım:</strong> Amacı, temel özellikleri ve bir hata ayıklama örneğini özetleyen kısa ekran kaydı. (Aşağıdan izleyebilirsin.)
         </p>
 
-        <!-- VEED linkiyle gömülü oynatıcı -->
         <div class="video-container" id="bigidea1-video">
-          <iframe 
-            src="https://www.veed.io/view/f034f216-00f3-4b66-905b-4a739faf3acb?panel=share" 
+          <iframe
+            src="https://www.veed.io/view/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?panel=share"
             title="Big Idea 1 — Creative Development"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>
           <div class="links">
-            <a href="https://www.veed.io/view/f034f216-00f3-4b66-905b-4a739faf3acb?panel=share" target="_blank" rel="noopener">Open in new tab</a>
+            <a href="https://www.veed.io/view/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?panel=share" target="_blank" rel="noopener">Yeni sekmede aç</a>
           </div>
         </div>
       </article>
     </section>
 
     <!-- DOCUMENTATION -->
-    <section id="documentation" class="page" data-title="Docs — Can Ortanç">
+    <section id="documentation" class="page" data-title="Docs — Ege Mert OK">
       <div class="links" aria-label="Docs Links">
+        <a href="#" target="_blank" rel="noopener">Proje Notları (PDF)</a>
+        <a href="#" target="_blank" rel="noopener">Sunum Slaytları</a>
       </div>
 
       <hr>
 
       <article class="card">
         <h3>Scratch Tic-Tac-Toe — Documentation</h3>
-        <p lang="en">
-          This Scratch project is a Tic-Tac-Toe game I built with help from my friend Ö.E.H.
-          Nine tiles toggle between X and O; win sprites check rows, columns, and diagonals, highlight the
-          winning line, and stop input. Next steps: fix edge-case bugs, add win/draw counters, a reset and
-          scoreboard, player vs. CPU mode, sound effects, and cleaner code.
+        <p lang="tr">
+          Dokuz kare X ve O arasında değişir; satır, sütun ve çaprazları kontrol eden “win” mantığı kazanma hattını vurgular
+          ve girişi kilitler. Sonraki adımlar: uç durum hatalarını düzeltmek, kazanma/beraberlik sayaçları, sıfırlama ve
+          skor tablosu eklemek, tek oyunculu (CPU) modu, ses efektleri ve daha temiz kod.
         </p>
-        <p><a href="https://www.veed.io/view/1f4218c4-9c37-4579-b079-d8ef7a13e7f9?panel=share" target="_blank" rel="noopener">Watch the video</a></p>
+        <p><a href="https://www.veed.io/view/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy?panel=share" target="_blank" rel="noopener">Videoyu İzle</a></p>
       </article>
     </section>
   </main>
 
   <footer>
     <div class="links" aria-label="Profile Links">
-      <a href="https://github.com/canortn" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://scratch.mit.edu/users/canortanchisarschool/" target="_blank" rel="noopener">Scratch</a>
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://scratch.mit.edu/" target="_blank" rel="noopener">Scratch</a>
     </div>
   </footer>
 
@@ -147,7 +158,7 @@
       if(active){
         active.style.display = 'block';
         if(navLinks[id]) navLinks[id].setAttribute('aria-current','page');
-        document.title = active.getAttribute('data-title') || 'Can Ortanç — Portfolio';
+        document.title = active.getAttribute('data-title') || 'Ege Mert OK — Portfolio';
       }else{
         location.hash = '#home';
       }
