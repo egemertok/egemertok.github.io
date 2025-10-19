@@ -561,6 +561,95 @@ struct BinaryCounterView: View {
           </div>
         </div>
       </article>
+
+
+
+
+
+
+
+
+
+
+
+      <h2>Big Idea 2 — Data and Information</h2>
+
+
+<article class="card">
+<p>
+In this unit, I explored how data is represented, compressed, analyzed, and used in programs.
+I practiced converting between number bases, compared compression strategies, pulled insights from datasets,
+and built small programs that load and visualize data. I documented my workflow with notes, screenshots,
+and short reflections on tradeoffs and ethical considerations.
+</p>
+
+
+<ul>
+<li><strong>2.1 Binary Numbers:</strong> Represented data with bits and bytes (integers, characters, colors). Practiced base-2 &lt;→ base-10/16 conversions, two’s-complement basics, and ASCII/RGB examples using quick Python snippets and truth tables.</li>
+<li><strong>2.2 Data Compression:</strong> Compared <em>lossless</em> (Run-Length Encoding, Huffman) vs. <em>lossy</em> (JPEG/MP3) compression. Measured file-size changes on images/text, discussed fidelity tradeoffs, and justified when each approach is appropriate.</li>
+<li><strong>2.3 Extracting Information from Data:</strong> Cleaned messy CSV data (remove nulls, normalize units), created visuals (bar/line/histogram), and summarized with mean/median/IQR. Interpreted trends, considered bias, and clearly distinguished correlation vs. causation.</li>
+<li><strong>2.4 Using Programs with Data:</strong> Wrote small programs to read files/APIs, transform data, and display results. Focused on inputs/outputs, data types, and storage formats (CSV/JSON). Reflected on privacy, security, and responsible data use.</li>
+</ul>
+
+
+<p class="muted">
+<strong>2-minute narration:</strong> A short screen recording that highlights a base conversion demo, a compression comparison, and one visualization with a key takeaway. (See the video below.)
+</p>
+
+
+<div class="video-container" id="bigidea2-video">
+<!-- Replace the file ID with your own Google Drive video; keep /preview for embed -->
+<iframe
+src="https://drive.google.com/file/d/REPLACE_WITH_YOUR_VIDEO_ID/preview"
+title="Big Idea 2 — Data and Information"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+<div class="links">
+<!-- Keep the /view link for opening in a new tab -->
+<a href="https://drive.google.com/file/d/REPLACE_WITH_YOUR_VIDEO_ID/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
+</div>
+</div>
+
+
+<details class="muted" style="margin-top:1rem;">
+<summary><strong>Optional: mini code examples I referenced</strong></summary>
+<pre><code>// Binary ↔ Decimal (Python)
+# Convert decimal 42 to binary and back
+bin_42 = bin(42) # '0b101010'
+dec_42 = int('101010', 2) # 42
+
+
+// Run-Length Encoding (pseudocode)
+function RLE(text):
+result = []
+count = 1
+for i from 1 to len(text):
+if i &lt; len(text) and text[i] == text[i-1]:
+count += 1
+else:
+append result with (text[i-1], count)
+count = 1
+return result
+
+
+// CSV load + quick plot (Python)
+import csv
+import statistics as stats
+with open('data.csv') as f:
+rows = list(csv.DictReader(f))
+values = [float(r['value']) for r in rows if r['value']]
+mean_val = stats.mean(values)
+print('Mean:', mean_val)
+</code></pre>
+</details>
+</article>
+
+
+
+
+      
     </section>
 
 
@@ -609,7 +698,11 @@ struct BinaryCounterView: View {
       <article class="card">
           <h3>Clock V1</h3>
         <p>
-       In SwiftUI, @State is used for data that can change and automatically updates what’s shown on the screen, while a normal var does not cause any updates and is recreated each time the view refreshes. We reset the hour to 0 after reaching 24 because clocks follow a 24-hour cycle, wrapping back to 0 after 23. Abstraction helps control the minute hand by hiding complex math and drawing details behind a simple idea. The .onTapGesture action is similar to Scratch’s “when sprite clicked” block since both respond to user interactions. Using minuteSeg is another example of abstraction—it defines how one tick mark looks so the same design can be reused to draw all sixty marks efficiently.
+       In SwiftUI, @State is used for data that can change and automatically updates what’s shown on the screen, while a normal var does not cause any updates and is recreated each time the view refreshes. 
+          We reset the hour to 0 after reaching 24 because clocks follow a 24-hour cycle, wrapping back to 0 after 23. 
+          Abstraction helps control the minute hand by hiding complex math and drawing details behind a simple idea. 
+          The .onTapGesture action is similar to Scratch’s “when sprite clicked” block since both respond to user interactions. 
+          Using minuteSeg is another example of abstraction—it defines how one tick mark looks so the same design can be reused to draw all sixty marks efficiently.
         </p>
 
 
@@ -621,20 +714,20 @@ struct BinaryCounterView: View {
     <article class="card">
           <h3>Clock V3</h3>
         <p>
-        This is the 2nd version of the clock I have been building for a long time in Swift Playground. It's a mickey mouse clock that children who like mickey mouse will like. 
-          In this project I worked as a group with my close friend Can Ortanç to make the idea. Then created the clock on my own.
+My target audience for this clock project is children who like Mickey Mouse because I wanted to make a clock that children who like mickey mouse would like to use.
+          I made the clock look like Mickey Mouse so they would like it. While researching ideas I came across multiple mickey mouse clocks and I took the things that most of them had like ears and eyes.
+          The most challenging part was making the eyes so it would change color according to the time. If I had more time I would add buttons that when pressed added accesories like hats.
         </p>
-    <img 
-    src="https://egemertok.github.io/images/Mickey Mouse Clock.png" 
-    alt="Screenshot of my project interface" />
 
          </article>
 
   <article class="card">
           <h3>Clock V2</h3>
         <p>
-        This is the 3rd version of the clock. I added buttons to the mickey mouse clock like "Hour-", "Hour+" and "Next Minute".
-          "Hour-" lessens the time by one hour, "Hour+" increases the time by one hour and "Next Minute" makes the clock go to the next minute.
+A Button in SwiftUI is a built-in control for user interactions that includes accessibility and styling, while .onTapGesture simply detects a tap on any view without those extra features. 
+          Having multiple input methods, like taps or keyboard input, lets users interact in the way that feels most natural or accessible to them. 
+          The most natural input depends on context—tapping feels easier on touchscreens, while typing suits precise tasks. 
+          This shows event-driven programming because the app waits for user actions, like taps or clicks, and responds when those events happen.
         </p>
     <img 
     src="https://egemertok.github.io/images/Mickey Mouse Clock 2.png" 
@@ -648,7 +741,9 @@ struct BinaryCounterView: View {
     <article class="card">
           <h3>Clock V5</h3>
         <p>
-        This is the 4th version of the mickey mouse clock. I added a button called "Random Hour" that changes the hour to a random hour.
+ForEach made my code simpler by repeating views automatically, so I didn’t have to create each item manually. 
+          I learned that using randomness makes apps more dynamic and unpredictable. The most challenging part was linking user input to changes in the clock’s state. 
+          This project is similar to Scratch’s “repeat” and “pick random” blocks because both help automate repetition and add random variation in a fun, interactive way.
         </p>
 
 
