@@ -400,7 +400,7 @@ struct BinaryCounterView: View {
 
     private var maxID: Int { (1 << bitCount) - 1 }
     private var modulus: Int { 1 << bitCount }
-    private var weights: [Int] { (0..<bitCount).map { 1 << $0 }.reversed() }
+    private var weights: [Int] { (0<bitCount).map { 1 << $0 }.reversed() }
     private var paddedBinary: String {
         let raw = String(id, radix: 2)
         let pad = String(repeating: "0", count: max(0, bitCount - raw.count))
