@@ -372,16 +372,15 @@ var body: some View {
   <h3>Binary Counter</h3>
   <p>This is a binary/decimal counter I made in Swift Playground.</p>
 
-
-<img 
+  <img 
     src="https://egemertok.github.io/images/Screenshot%202025-10-05%20at%2023.31.51.png" 
     alt="Screenshot of my project interface" />
 
-
-  
   <details>
     <summary>Show Swift code</summary>
-    <pre><code class="language-swift">import SwiftUI
+
+```swift
+import SwiftUI
 
 struct ContentView: View {
     var body: some View {
@@ -400,7 +399,7 @@ struct BinaryCounterView: View {
 
     private var maxID: Int { (1 << bitCount) - 1 }
     private var modulus: Int { 1 << bitCount }
-    private var weights: [Int] { (0<bitCount).map { 1 << $0 }.reversed() }
+    private var weights: [Int] { (0..<bitCount).map { 1 << $0 }.reversed() }
     private var paddedBinary: String {
         let raw = String(id, radix: 2)
         let pad = String(repeating: "0", count: max(0, bitCount - raw.count))
@@ -494,13 +493,7 @@ struct BinaryCounterView: View {
         }
         .padding()
     }
-}</code></pre>
-  </details>
-
-  <div class="links">
-
-  </div>
-</article>
+}
 
 
 
