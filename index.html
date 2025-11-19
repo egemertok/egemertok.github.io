@@ -1324,6 +1324,102 @@ fileprivate extension Comparable {
 </article>
 
 
+
+
+
+      <article class="card">
+          <h3>My Array Map V1</h3>
+        <p>
+        This is the 1st version of a new array map that I have made. 
+        It just lists sports and gives them index numbers.
+        </p>
+
+    <img 
+    src="https://egemertok.github.io/images/My Array Map V1.png" 
+    alt="Screenshot of my project interface" />
+
+      <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">
+
+        import SwiftUI
+
+struct ContentView: View {
+    
+    let sports = ["Football", "Basketball", "Volleyball", "Tennis"]
+    
+    var body: some View {
+        VStack(spacing: 30) {
+            
+           
+            Text("My Array Map V1")
+                .font(.largeTitle)
+                .bold()
+
+HStack(spacing: 20) {
+ForEach(sports, id: \.self) { item in
+Text(item)
+.frame(width: 140, height: 70)
+.bold()
+
+                        
+.font(.title3)
+                }
+            }
+            
+            VStack(spacing: 8) {
+                Text("İndex:")
+                    .font(.title2)
+                    .bold()
+               
+                
+                HStack(spacing: 95) {
+                    
+                    Text("0")
+                    Text("1")
+                    Text("2")
+                    Text("3")
+                }
+                .font(.title2)
+            }
+           
+            Text("Count: \(sports.count)")
+                .font(.title2)
+                .padding(.top, 20)
+                .bold()
+            
+            
+            
+        }
+        .padding()
+    }
+}
+
+
+
+              
+            </code></pre>
+          </details>
+
+      
+         </article>
+
+
+
+
+
+      <article class="card">
+      <h3>Super Array List V2</h3>
+      <p>
+  A larger version of my first Array Project.
+      </p>
+   <img 
+    src="https://egemertok.github.io/images/Super Array.png" 
+    alt="Screenshot of my project interface" />
+      </article>
+
+
+
     </section>
 
     <!-- BIG IDEAS -->
@@ -1349,7 +1445,7 @@ fileprivate extension Comparable {
         </p>
 
         <div class="video-container" id="bigidea1-video">
-          <!-- Use /preview for Google Drive embeds -->
+       
           <iframe
             src="https://drive.google.com/file/d/1qhtmg_yFnklCo8SBv5RHiQBptT6C8D_F/preview"
             title="Big Idea 1 — Creative Development"
@@ -1358,7 +1454,7 @@ fileprivate extension Comparable {
             allowfullscreen>
           </iframe>
           <div class="links">
-            <!-- Keep the /view link for opening in a new tab -->
+
             <a href="https://drive.google.com/file/d/1qhtmg_yFnklCo8SBv5RHiQBptT6C8D_F/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
           </div>
         </div>
@@ -1409,7 +1505,6 @@ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; pic
 allowfullscreen>
 </iframe>
 <div class="links">
-<!-- Keep the /view link for opening in a new tab -->
 <a href="https://drive.google.com/file/d/1GTPQYvzvf2ssAeSB5b310CF6mZyrEffL/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
 </div>
 </div>
@@ -1628,8 +1723,25 @@ allowfullscreen>
     
     
     
-    
-    
+    <article class="card">
+      <h3>My Array Map V1</h3>
+      <p>For this project I first made a canva poster to get an idea of what I will work on and do. Then I made a swift code that displayed the list and it's details.
+      For the theme of this project I chose sports because I like playing sports a lot. While creating this project I learned that
+        a list (array) is a way to store multiple values inside one variable and that each item has a position number called an index. If the list were to have more items
+        index would increase with the count.
+      </p>
+   <img 
+    src="https://egemertok.github.io/images/Array Map Canva.png" 
+    alt="Screenshot of my project interface" />
+      </article>
+
+
+     <article class="card">
+      <h3>Super List Project V2</h3>
+      <p>For this project I took the main concept of the V1 which is a list of sports and added more sports. Making the list nicer and better.
+      </p>
+
+      </article>
     
 
 
