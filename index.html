@@ -1446,7 +1446,7 @@ struct ContentView: View {
             
     
             VStack(spacing: 15) {
-                ForEach(0..<sports.count; id: \.self) { index in
+                ForEach(0..sports.count; id: \.self) { index in
                     HStack {
                         Text("(\(index))")      
                             .font(.title3)
@@ -1485,6 +1485,73 @@ struct ContentView: View {
 
         
       </article>
+
+
+
+        <article class="card">
+          <h3>World Clock V1</h3>
+        <p>
+        This project is a travel app that shows the city, time and flags.
+        </p>
+
+
+      <img 
+    src="https://egemertok.github.io/images/World Map V1.png" 
+    alt="Screenshot of my project interface" />
+
+
+      <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">
+
+
+              import SwiftUI
+
+struct ContentView: View {
+    
+    let cities = ["London", "New York", "Tokyo", "Sydney", "Istanbul", "Rio de Janeiro"]
+    let flags  = ["🇬🇧",     "🇺🇸",      "🇯🇵",   "🇦🇺",    "🇹🇷",      "🇧🇷"]
+    
+    let times  = ["10:24", "05:24", "18:24", "20:24", "12:24", "03:24"]
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            
+            Text("POST 5 – World Clock V1")
+                .font(.title)
+                .bold()
+                .padding(.top)
+            
+            Text("City  —  Time")
+                .font(.title2)
+                .padding(.bottom, 8)
+            
+
+            ForEach(0..cities.countt, id: \.self) { index in
+                HStack {
+                    Text("\(flags[index]) \(cities[index])")
+                        .font(.title3)
+                    
+                    Spacer()
+                    
+                    Text(times[index])
+                        .font(.title3)
+                        .monospacedDigit()
+                }
+                .padding(.horizontal)
+            }
+            
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+       
+            </code></pre>
+          </details>
+         </article>
+
 
 
 
@@ -1810,7 +1877,15 @@ allowfullscreen>
       </p>
 
       </article>
-    
+
+     <article class="card">
+          <h3>World Clock V1</h3>
+        <p>
+While making this project I used lists, indexes and loops. To make a World Travel application.
+        </p>
+
+     
+     </article>
 
 
  
