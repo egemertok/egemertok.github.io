@@ -1554,6 +1554,133 @@ struct ContentView: View {
 
 
 
+ <article class="card">
+          <h3>List Project Ice Cream</h3>
+        <p>
+This is a project where I used lists to make a Ice Cream Flavor Chooser.
+          </p>
+
+  <img
+    src="https://egemertok.github.io/images/ice cream list.png" 
+    alt="Screenshot of my project interface" />
+
+      <iframe
+src="https://drive.google.com/file/d/1QNu0y0UswhKK6I59gIUziQAGRViqlF_v/view?usp=sharing"
+title="List Project Ice Cream"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+<div class="links">
+<!-- Keep the /view link for opening in a new tab -->
+<a href="https://drive.google.com/file/d/1QNu0y0UswhKK6I59gIUziQAGRViqlF_v/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
+</div>
+</div>
+
+
+
+
+   <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">
+
+
+              import SwiftUI
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct ContentView: View {
+    let flavor = [ 
+        "Vanilla ⚪️",
+        "Choclate 🟤",
+        "Strawberry 🔴",
+        "Caramel 🟠",
+        "Banana 🟡"
+    ]
+
+  
+        
+        
+        
+        
+    
+    var body: some View {
+        
+        
+        Text("Ice Cream Flavor Choose")
+            .font(.largeTitle)
+            .bold()
+        
+        
+        
+        VStack(spacing: 15) {
+            ForEach(0..<flavor.count, id: \.self) { index in
+                HStack {
+                    Text("(\(index))")      
+                        .font(.title3)
+                        .bold()
+                    
+                    
+    Text(flavor[index])    
+    .font(.title3)
+                    
+                    Spacer() 
+                        
+                }
+                .padding()
+                .background(Color.black.opacity(0.2))
+                .cornerRadius(10)
+                .padding(.horizontal)
+               
+                
+            }
+            
+          Triangle()
+                .fill(.brown)
+                .frame(width: 300, height: 300)
+                .padding(.bottom, 6)
+            
+                        }
+
+            
+            
+        }
+        
+    }
+    
+
+
+       
+            </code></pre>
+          </details>
+         </article>
+
+
+
+        <article class="card">
+          <h3>Swift Design Challenge V1</h3>
+        <p>
+        This project is a simple draft of a Mood Tracking App I made in Figma.
+        </p>
+
+
+      <img 
+    src="https://egemertok.github.io/images/Daily Mood Tracker.png" 
+    alt="Screenshot of my project interface" />
+
+
+      
+      
+
 
     </section>
 
@@ -1889,7 +2016,19 @@ While making this project I used lists, indexes and loops. To make a World Trave
 
 
  
+<article class="card">
+          <h3>List Project Ice Cream</h3>
+        <p>
+In this project I used lists to make Ice Cream flavors pop up on the screen with their index number.
+          </p>
+  </article>
 
+
+      <article class="card">
+          <h3>Swift Design Challenge V1</h3>
+        <p>
+        Nadin’s story inspired me with her perseverance, curiosity, and the way she used every opportunity to learn, grow, and share her knowledge with others. Her journey showed me the power of community and how teaching what you learn can amplify your impact. In the future, I’d like to explore ideas that combine education and technology.
+        </p>
 
      
     </section>
