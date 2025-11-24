@@ -1711,7 +1711,107 @@ struct ContentView: View {
 
 
 
+ <article class="card">
+          <h3>Pixel Painter</h3>
+        <p>
+       In this project I made a 10x10 pixel grid where the entered input number colors the matching cell in the grid. I used loops and functions a lot in this project.
+        </p>
 
+    <img 
+    src="https://egemertok.github.io/images/Pixel Painter.png" 
+    alt="Screenshot of my project interface" />
+
+      <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">
+
+              import SwiftUI
+
+struct ContentView: View {
+    let cells = Array(0..<100)
+    @State private var cellColors: [Color] = Array(repeating: .gray, count: 100)
+    @State private var inputText: String = ""
+    @State private var message: String = ""
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Pixel Painter 10×10")
+                .font(.title)
+                .bold()
+            
+            HStack {
+                TextField("Enter a cell number (0–99)", text: $inputText)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                Button("Paint") {
+                    changeColor()
+                }
+            }
+            
+
+            if !message.isEmpty {
+                Text(message)
+                    .foregroundColor(.red)
+            }
+            
+
+            drawGrid()
+            
+            Spacer()
+        }
+        .padding()
+    }
+    
+
+    func drawGrid() -> some View {
+        VStack(spacing: 2) {
+
+            ForEach(0..<10, id: \.self) { row in
+                HStack(spacing: 2) {
+
+                    ForEach(0..<10, id: \.self) { col in
+                        let index = row * 10 + col
+                        
+                        Text("\(index)")
+                            .frame(width: 30, height: 30)
+                            .background(cellColors[index])
+                            .border(Color.black, width: 1)
+                            .font(.caption)
+                    }
+                }
+            }
+        }
+    }
+    
+
+    func changeColor() {
+  
+        if let number = Int(inputText) {
+
+            if number >= 0 && number < 100 {
+ 
+                cellColors[number] = .blue
+                message = ""         
+            } else {
+                print("Invalid input")
+                message = "Invalid input"
+            }
+        } else {
+                      print("Invalid input")
+            message = "Invalid input"
+        }
+    }
+}
+
+
+
+              
+            </code></pre>
+          </details>
+
+      
+         </article>
 
 
 
@@ -2109,6 +2209,56 @@ allowfullscreen>
 <div class="links">
 
 <a href="https://drive.google.com/file/d/1FkdQeeto-qXgsIMwJNPoRQwmwMMT3SLR/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
+</div>
+</div>
+
+
+         </article>
+
+
+
+     <article class="card">
+          <h3>Pixek Painter</h3>
+        <p> 1. How will you create a list with numbers 0–99?    <p>
+    <p>Make an empty list. Add numbers from 0 to 99 using a loop. Store them in a list called cells.    <p>
+
+
+
+    <p> 2. How will you draw a 10×10 grid using loops?    <p>
+
+    <p>Use a loop for rows (0–9).
+Inside it, use another loop for columns (0–9).
+For each square, calculate the cell number using:
+ cellIndex = row * 10 + col
+Draw one square for each cell.    <p>
+
+
+
+
+    <p>3. What happens when the user types a number?    <p>
+    <p>If number is between 0 and 99 → change that cell’s color
+else → show “invalid input”
+If it’s a number and between 0–99 change that cell’s color.    
+Otherwise show “invalid input”.    <p>
+
+    <p>Which part will be a function?
+e.g. “drawGrid() draws all 100 squares”    <p>
+    <p>drawGrid() displays the 10×10 grid with correct colors
+changeColor() checks input and updates the color of the selected cell
+
+        </p>
+
+               <div class="video-container" id="Pixel Painter">
+<iframe
+src="https://drive.google.com/file/d/1DRnD_GylulkdjKa-bUBT4ucPhE5BJ65g/preview"
+title="Pixel Painter"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+<div class="links">
+
+<a href="https://drive.google.com/file/d/1DRnD_GylulkdjKa-bUBT4ucPhE5BJ65g/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
 </div>
 </div>
 
