@@ -1928,7 +1928,92 @@ struct ContentView: View {
       
          </article>
 
+      <article class="card">
+        <h3>Spinner Simulation</h3>
+        <p> In this project I made a spin button that when pressed changes the color of a shape to a random color.</p>
+
+
+ <img 
+    src="https://egemertok.github.io/images/Spinner Simulation.png" 
+    alt="Screenshot of my project interface" />
+
+      <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">
+
+
+            
+import SwiftUI
+
+struct ContentView: View {
+    @State private var currentColor: Color = .gray
+    @State private var colorName: String = "Waiting..."
+    @State private var blueCount = 0
+    @State private var orangeCount = 0
+    @State private var purpleCount = 0
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Spinner Simulation")
+                .font(.largeTitle)
+                .bold()
+            ZStack {
+                Rectangle()
+                    .fill(currentColor)
+                    .frame(width: 180, height: 180)
+                    .cornerRadius(12)
+                Text(colorName).foregroundColor(.white).font(.title2).bold()
+            }
+            
+            Button("Spin") { spin() }
+                .font(.title2).padding().bold()
+            
+            VStack {
+                Text("Blue: \(blueCount)  |  Orange: \(orangeCount)  |  Purple: \(purpleCount)")
+                    .font(.headline)
+            }
+            
+            Spacer()
+        }
+        .padding()
+    }
+    
+    func spin() {
+        let first = Int.random(in: 1...2)
+        if first == 1 {
+            currentColor = .blue
+            colorName = "Blue"
+            blueCount += 1
+        } 
+        else 
+        {
+            let second = Int.random(in: 1...2) 
+            if second == 1 {
+                currentColor = .orange
+                colorName = "Orange"
+                orangeCount += 1
+            } else {
+                currentColor = .purple
+                colorName = "Purple"
+                purpleCount += 1
+            }
+        }
+    }
+}
+
+
+
+              
+            </code></pre>
+          </details>
+
       
+         </article>
+
+
+
+
+        
 
 
     </section>
@@ -2378,7 +2463,39 @@ allowfullscreen>
 
          </article>
 
+<article class="card">
+          <h3>Spinner Simulation</h3>
+        <p> 1. The program will decide the color by making a major random choice first. If that first result equals 1, the app will pick blue. If the first result is not 1, the app will roll another random number to choose between orange and purple.
+</p>
+  <p>
+   2. When the user taps the Spin button, one main spinner function will run. This function will generate random numbers, update the color stored in state, change the square’s background, and update the text showing the new color. The UI refreshes automatically because SwiftUI watches the state variables.
+  </p>
+  <p>
+    3. The app needs variables to hold the current displayed color and the current color name. For tracking results, it also needs counters for each color: blue, orange, and purple.
+  </p>
+  <p>
+    The spinner logic should be written as one function because it keeps the random decision process reusable and organized. Every time it runs, the function will roll the numbers, use nested conditionals to choose a final color, update the displayed values, and increase the correct counter.
+  </p>
+  <p>
+    Nested conditionals are needed because the decision only reaches orange or purple after the first major check fails. This two-step dependency changes the probability, making blue more common than the other two colors, and it mirrors the structure of a real nested decision path instead of a single flat check.
+  </p>
 
+               <div class="video-container" id="Spinner Simulation Video">
+<iframe
+src="https://drive.google.com/file/d/1FkdQeeto-qXgsIMwJNPoRQwmwMMT3SLR/preview"
+title="Spinner Simulation"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+<div class="links">
+
+<a href="https://drive.google.com/file/d/1FkdQeeto-qXgsIMwJNPoRQwmwMMT3SLR/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
+</div>
+</div>
+
+
+         </article>
 
 
 
