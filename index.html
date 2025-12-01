@@ -2474,10 +2474,10 @@ allowfullscreen>
     3. The app needs variables to hold the current displayed color and the current color name. For tracking results, it also needs counters for each color: blue, orange, and purple.
   </p>
   <p>
-    The spinner logic should be written as one function because it keeps the random decision process reusable and organized. Every time it runs, the function will roll the numbers, use nested conditionals to choose a final color, update the displayed values, and increase the correct counter.
+    4. The spinner logic should be written as one function because it keeps the random decision process reusable and organized. Every time it runs, the function will roll the numbers, use nested conditionals to choose a final color, update the displayed values, and increase the correct counter.
   </p>
   <p>
-    Nested conditionals are needed because the decision only reaches orange or purple after the first major check fails. This two-step dependency changes the probability, making blue more common than the other two colors, and it mirrors the structure of a real nested decision path instead of a single flat check.
+   5. Nested conditionals are needed because the decision only reaches orange or purple after the first major check fails. This two-step dependency changes the probability, making blue more common than the other two colors, and it mirrors the structure of a real nested decision path instead of a single flat check.
   </p>
 
                <div class="video-container" id="Spinner Simulation Video">
