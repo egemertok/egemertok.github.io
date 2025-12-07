@@ -2200,7 +2200,212 @@ allowfullscreen>
 <a href="https://drive.google.com/file/d/1zbeDfbGwHIo3h1ZianWgy0yq6ddz02PK/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
 </div>
 </div>
+  
+<summary>Show Swift code (Scenario 1)</summary>
+            <pre><code class="language-swift">
 
+import SwiftUI
+
+struct ContentView: View {
+    // 3.1 Variables and Assignments
+    @State private var hours = ""
+    @State private var rate = ""
+    @State private var result = ""
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("Scenario 1: Pay Calculator")
+                .font(.headline)
+            
+            TextField("Hours worked", text: $hours)
+                .textFieldStyle(.roundedBorder)
+            TextField("Hourly rate", text: $rate)
+                .textFieldStyle(.roundedBorder)
+            
+            Button("Calculate") {
+                calculatePay()
+            }
+            
+            Text(result)
+                .padding()
+            
+            Text("• Variables store hours and rate")
+            Text("• Function hides the calculation")
+            Text("• Math = hours × rate")
+        }
+        .padding()
+    }
+    
+    // 3.2 Data Abstraction: simple function
+    func pay(hours: Double, rate: Double) -> Double {
+        // 3.3 Mathematical Expression
+        return hours * rate
+    }
+    
+    func calculatePay() {
+        let h = Double(hours) ?? 0
+        let r = Double(rate) ?? 0
+        let total = pay(hours: h, rate: r)
+        result = "Pay: $\(total)"
+    }
+}
+           
+</code></pre>
+          </details>
+
+
+
+
+  <p><strong>Scenario 2 Video 3.4-3.6 </strong></p>
+  
+<div class="video-container" id="bigidea3-video">
+<iframe
+src="https://drive.google.com/file/d/11zFQgv91fF7Y2NnDWZ0l8Xjp28mkPQX6/preview"
+title="Big Idea 2 — Data and Information"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+<div class="links">
+<a href="https://drive.google.com/file/d/11zFQgv91fF7Y2NnDWZ0l8Xjp28mkPQX6/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
+</div>
+</div>
+  
+<summary>Show Swift code (Scenario 2)</summary>
+            <pre><code class="language-swift">
+import SwiftUI
+
+struct ContentView: View {
+    // 3.4 Strings
+    let correctUser = "student"
+    let correctPass = "1234"
+    
+    @State private var username = ""
+    @State private var password = ""
+    @State private var message = ""
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("Scenario 2: Login Check")
+                .font(.headline)
+            
+            TextField("Username", text: $username)
+                .textFieldStyle(.roundedBorder)
+            SecureField("Password", text: $password)
+                .textFieldStyle(.roundedBorder)
+            
+            Button("Log In") {
+                check()
+            }
+            
+            Text(message)
+                .padding()
+            
+            Text("• Strings store names/passwords")
+            Text("• Booleans compare values")
+            Text("• If/else picks the result")
+        }
+        .padding()
+    }
+    
+    func check() {
+        // 3.5 Boolean Expressions
+        let userOK = (username == correctUser)
+        let passOK = (password == correctPass)
+        
+        // 3.6 Conditionals
+        if userOK && passOK {
+            message = "Login successful!"
+        } else {
+            message = "Login failed."
+        }
+    }
+}
+
+
+
+           
+</code></pre>
+          </details>
+
+
+  <p><strong>Scenario 3 Video 3.7-3.10 </strong></p>
+  
+<div class="video-container" id="bigidea3-video">
+<iframe
+src="https://drive.google.com/file/d/1Bmax9damMncgFxFmZHiUEw4aZc5uJnrY/preview"
+title="Big Idea 2 — Data and Information"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+<div class="links">
+<a href="https://drive.google.com/file/d/1Bmax9damMncgFxFmZHiUEw4aZc5uJnrY/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
+</div>
+</div>
+  
+<summary>Show Swift code (Scenario 3)</summary>
+            <pre><code class="language-swift">
+
+              import SwiftUI
+
+struct ContentView: View {
+    // 3.10 List
+    let temps = [70, 75, 80, 65]
+    
+    @State private var output = ""
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("Scenario 3: Weather Check")
+                .font(.headline)
+            
+            Button("Analyze Temps") {
+                analyze()
+            }
+            
+            Text(output)
+                .padding()
+            
+            Text("• List holds the temps")
+            Text("• Loop checks each one")
+            Text("• Nested ifs describe the weather")
+            Text("• Algorithm finds the highest temp")
+        }
+        .padding()
+    }
+    
+    func analyze() {
+        var text = ""
+        var maxTemp = temps[0]     
+        
+        // 3.8 Iteration
+        for t in temps {
+            
+            // 3.7 Nested Conditionals
+            if t >= 75 {
+                if t >= 80 {
+                    text += "\(t): Very hot\n"
+                } else {
+                    text += "\(t): Warm\n"
+                }
+            } else {
+                text += "\(t): Cool\n"
+            }
+    
+            if t > maxTemp {
+                maxTemp = t
+            }
+        }
+        
+        text += "Hottest temp: \(maxTemp)"
+        output = text
+    }
+}
+
+           
+</code></pre>
+          </details>
 
 
 </article>
