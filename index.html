@@ -2081,7 +2081,162 @@ struct ContentView: View {
 
 
 
-        
+        <article class="card">
+        <h3>Robot Movement Simulation</h3>
+        <p> In this project I made a robot movement simulation that worked with buttons and moved around a grid.</p>
+
+
+ <img 
+    src="https://egemertok.github.io/images/Robot.png" 
+    alt="Screenshot of my project interface" />
+
+      <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">
+
+
+import SwiftUI
+
+enum Direction { case up, down, left, right }
+
+struct Move {
+    let direction: Direction
+    let steps: Int
+}
+
+struct ContentView: View {
+    @State private var robotRow = 0
+    @State private var robotCol = 0
+    @State private var message = "Ready"
+    
+    let gridSize = 10
+    
+    // Array 1
+    let obstacles: [(Int, Int)] = [(2,2), (2,3), (4,5), (6,1), (7,7)]
+    
+    // Array 2
+    let movesList: [Move] = [
+        Move(direction: .right, steps: 3),
+        Move(direction: .down, steps: 2),
+        Move(direction: .right, steps: 2),
+        Move(direction: .down, steps: 3),
+        Move(direction: .left, steps: 1)
+    ]
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Robot Movement Simulation").font(.title).bold()
+            Text(message)
+            
+            drawGrid(size: gridSize)
+            
+            VStack(spacing: 10) {
+                Button("⬆️") { move(direction: .up, steps: 1) }
+                HStack(spacing: 20) {
+                    Button("⬅️") { move(direction: .left, steps: 1) }
+                    Button("⬇️") { move(direction: .down, steps: 1) }
+                    Button("➡️") { move(direction: .right, steps: 1) }
+                }
+                Button("Run List") { runMoves(list: movesList) }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+    }
+    
+    // Function 1
+    @ViewBuilder
+    func drawGrid(size: Int) -> some View {
+        VStack(spacing: 2) {
+            ForEach(0..size, id: \.self) { row in
+                HStack(spacing: 2) {
+                    ForEach(0..size, id: \.self) { col in
+                        ZStack {
+                            Rectangle()
+                                .strokeBorder(lineWidth: 1)
+                                .frame(width: 34, height: 34)
+                                .background(cellColor(row: row, col: col))
+                            
+                            if row == robotRow && col == robotCol {
+                                Rectangle().fill(Color.black).frame(width: 30, height: 30)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // Function 2 
+    func cellColor(row: Int, col: Int) -> Color {
+        if isObstacle(row: row, col: col) { return .red.opacity(0.35) } // if/else 1
+        else { return .clear }
+    }
+    
+    // Function 3 
+    func isObstacle(row: Int, col: Int) -> Bool {
+        obstacles.contains(where: { $0.0 == row && $0.1 == col })
+    }
+    
+    // Function 4
+    func inBounds(row: Int, col: Int) -> Bool {
+        row >= 0 && row  gridSize && col >= 0 && col  gridSize
+    }
+    
+    // Function 5
+    func move(direction: Direction, steps: Int) {
+        for _ in 0..steps {
+            var newRow = robotRow
+            var newCol = robotCol
+            
+            switch direction {
+            case .up: newRow -= 1
+            case .down: newRow += 1
+            case .left: newCol -= 1
+            case .right: newCol += 1
+            }
+            
+            if inBounds(row: newRow, col: newCol) {                 // if/else 2
+                if isObstacle(row: newRow, col: newCol) {           // if/else 3 (nested)
+                    message = "Blocked"
+                } else {
+                    robotRow = newRow
+                    robotCol = newCol
+                    if robotRow == 9 && robotCol == 9 {             // if/else 4
+                        message = "Reached (9,9)"
+                    } else {
+                        message = "Moved"
+                    }
+                }
+            } else {
+                if robotRow == 0 && direction == .up {              // if/else 5 (nested)
+                    message = "Top edge"
+                } else {
+                    message = "Out of bounds"
+                }
+            }
+        }
+    }
+    
+  
+    func runMoves(list: [Move]) {
+        for m in list {                                             // For-loop
+            if message == "Blocked" { break }              
+            move(direction: m.direction, steps: m.steps)
+        }
+    }
+}
+
+            
+
+              
+            </code></pre>
+          </details>
+
+      
+         </article>
+
+
 
 
     </section>
@@ -2894,7 +3049,46 @@ allowfullscreen>
 </article>
 
 
-     
+ <article class="card">
+          <h3>Robot Movement Simulation</h3>
+        <p>
+          1. The purpose of my program is to simulate a robot moving on a 10x10 grid. The robot can be controlled with arrow buttons or move automatically using a list of moves. It gives the user a simple, interactive experience similar to a small grid-based game.
+
+2. I chose the move(direction:steps:) procedure. It reduces complexity by handling all movement logic in one place instead of repeating code. It is reusable because it is used by both the arrow buttons and the Run List button. The parameters change the robot’s behavior by controlling the direction and number of steps.
+
+3. The main algorithm is in runMoves(list:). It uses an array of moves, a for loop to go through the list, and a conditional that stops the loop if the robot is blocked. These work together to move the robot automatically and safely.
+
+4. A challenge was preventing the robot from moving outside the grid or into obstacles. I solved this by checking boundaries and obstacles before updating the robot’s position and testing different cases.
+
+5. Nested if/else statements are used in the move function. The program first checks if a move is in bounds, and inside that check it tests for obstacles. This allows the robot to make better decisions, such as stopping when blocked but moving when the space is valid.
+
+        </p>
+<img 
+    src="https://egemertok.github.io/images/Functions Robot.png" 
+    alt="Screenshot of my project interface" />
+
+   <img 
+    src="https://egemertok.github.io/images/Main Algorithm Robot.png" 
+    alt="Screenshot of my project interface" />
+
+      <iframe
+src="https://drive.google.com/file/d/1nVENghZJSTRN0vW-_3EcuBaO5sl5xr9J/preview"
+title="Big Idea 2 — Data and Information"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+<div class="links">
+<a href="https://drive.google.com/file/d/1nVENghZJSTRN0vW-_3EcuBaO5sl5xr9J/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
+</div>
+</div>
+ </article>
+
+
+
+
+
+      
 
      
     </section>
