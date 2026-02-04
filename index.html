@@ -2270,6 +2270,28 @@ struct ContentView: View {
 
     </section>
 
+
+
+              <section id="projects3" class="page" data-title="Projects3 — Ege Mert OK">
+  <h2>Projects3</h2>
+
+
+<article class="card">
+        <h3>Rock Paper Scissors Game</h3>
+        <p> This is a rock paper scissors game I made in Swift Playground. </p>
+
+
+ <img 
+    src="https://egemertok.github.io/images/Rock.png" 
+    alt="Screenshot of my project interface" />
+                
+</article>
+
+
+
+</section>
+                
+
     <!-- BIG IDEAS -->
     <section id="big-ideas" class="page" data-title="Big Ideas — Ege Mert OK">
       <h2>Big Idea 1 — Creative Development</h2>
@@ -3140,6 +3162,42 @@ allowfullscreen>
 
      
     </section>
+   <section id="documentation3" class="page" data-title="Documentation3 — Ege Mert OK">
+      <h2>Documentation3</h2>
+
+<article class="card">
+          <h3>Rock Paper Scissors Game</h3>
+  <h3>Core Logic</h3>
+        <p>
+The rules of Rock–Paper–Scissors are that rock beats scissors, paper beats rock, scissors beat paper, and matching choices result in a tie.
+The determineWinner function decides who wins by first checking if both choices are the same, then checking if the user’s choice matches any of the winning combinations, and otherwise declaring the computer the winner.
+The randomElement() function randomly selects one emoji from the choices array to simulate the computer’s move.
+  </p>
+  <h3>State Managment
+  </h3>
+  <p> The @State property wrapper keeps track of the user’s choice by allowing SwiftUI to store and monitor changes to that value.
+The result is displayed dynamically because changing a @State variable automatically causes the view to refresh and show the updated text on the screen.</p>
+  <h3>User Interaction</h3>
+  <p>The app knows which choice the user clicked because each button passes its emoji value into the playGame function when tapped.
+After the user makes a selection, the app saves the user’s choice, generates a random computer choice, determines the winner, and updates the displayed result immediately.</p>
+
+  <img 
+    src="https://egemertok.github.io/images/Rock.png" 
+    alt="Screenshot of my project interface" />
+    
+
+ </article>
+
+
+
+
+     
+   </section>
+
+
+
+
+              
   </main>
 
   
