@@ -2281,9 +2281,167 @@ struct ContentView: View {
         <p> This is a rock paper scissors game I made in Swift Playground. </p>
 
 
+
+
+
+
+
+
+
+
+  
  <img 
     src="https://egemertok.github.io/images/Rock.png" 
     alt="Screenshot of my project interface" />
+
+
+
+
+
+
+
+   <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+ContentView:
+      import SwiftUI
+
+struct ContentView: View {
+
+
+@State private var resultText = "Make a choice!"
+
+    
+var body: some View {
+VStack(spacing: 20) {
+
+Text("\(whowin)")
+    
+Text("Computer Wins: \(comwin)")
+Text("Player Wins: \(plwin)")
+            
+Text("Rock Paper Scissors")
+.font(.largeTitle)
+            
+Text("You: \(userChoice)")
+.font(.title2)
+            
+Text("Computer: \(computerChoice)")
+.font(.title2)
+            
+Text(resultText)
+.font(.title)
+.padding()
+            
+HStack(spacing: 20) {
+ForEach(choices, id: \.self) { choice in
+Button(action: {
+playGame(userPicked: choice)
+}) {
+Text(choice)
+.font(.system(size: 60))
+                    }
+                }
+            }
+    
+    
+    
+    
+            
+Button("Restart") {
+userChoice = "❓"
+computerChoice = "❓"
+resultText = "Make a choice!"
+whowin = ""
+comwin = 0
+plwin = 0
+
+            }
+.padding(.top, 20)
+        }
+.padding()
+    }
+    
+
+func playGame(userPicked: String) {
+userChoice = userPicked
+computerChoice = randomComputerChoice()
+resultText = determineWinner(userChoice: userChoice, computerChoice: computerChoice)
+    }
+    
+
+
+}
+
+
+Logic:
+              import SwiftUI
+
+let choices = ["🪨", "📄", "✂️"]
+
+var userChoice = "❓"
+var computerChoice = "❓"
+var comwin = 0
+var plwin = 0
+var whowin : String = ""
+
+
+
+
+
+func randomComputerChoice() -> String {
+    return choices.randomElement() ?? "🪨"
+}
+
+func determineWinner(userChoice: String, computerChoice: String) -> String {
+    
+    if userChoice == computerChoice {
+        return "It's a tie!"
+    }
+    
+    if (userChoice == "🪨" && computerChoice == "✂️") ||
+       (userChoice == "📄" && computerChoice == "🪨") ||
+       (userChoice == "✂️" && computerChoice == "📄") {
+        plwin=plwin+1
+        if plwin == 3 {
+            whowin = "Player Wins!" 
+            comwin = 0
+            plwin = 0
+        }
+        return "You win!"
+        
+                
+        
+    } 
+    else {
+        comwin=comwin+1
+        if comwin == 3 {
+            whowin = "Computer Wins!" 
+            comwin = 0
+            plwin = 0
+            }
+        return "You lose!"
+ 
+            
+        
+        
+        
+        
+        
+    }
+
+
+
+
+
+    
+    
+}
+              
+            
+            
+            
+            </code></pre>
+          </details>
                 
 </article>
 
