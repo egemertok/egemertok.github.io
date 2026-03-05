@@ -2455,6 +2455,97 @@ This is the digital portfolio I made for my previous project Rock Paper Scissors
 
 
 
+
+
+
+                 <article class="card">
+          <h3>BINARY SEARCH PROTOCOL Swift Project</h3>
+        <p>
+       This is a binary search program I made through swift playground.
+        </p>
+
+    <img 
+    src="https://egemertok.github.io/images/BinaryS.png" 
+    alt="Screenshot of my project interface" />
+
+      <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">
+import SwiftUI
+
+struct ContentView: View {
+    @State var output: [String] = []
+    
+    func binarySearch(list: [Int], target: Int) -> Int? {
+        var left = 0
+        var right = list.count - 1
+        var step = 1
+        
+        output.append("Searching for \(target)")
+        output.append("List: \(list)\n")
+        
+        while left <= right {
+            let mid = (left + right) / 2
+            let midValue = list[mid]
+            
+            output.append("Step \(step): left=\(left), right=\(right), mid=\(mid), value=\(midValue)")
+            
+            if midValue == target {
+                output.append("Found at index \(mid)\n")
+                return mid
+            } else if target < midValue {
+                output.append("Target is smaller, search left half\n")
+                right = mid - 1
+            } else {
+                output.append("Target is larger, search right half\n")
+                left = mid + 1
+            }
+            
+            step += 1
+        }
+        
+        output.append("Not found\n")
+        return nil
+    }
+    
+    var body: some View {
+        VStack {
+            Text("Binary Seach")
+                .font(.title)
+                .padding()
+                .bold()
+            
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(output, id: \.self) { line in
+                        Text(line)
+                            .font(.body)
+                            .padding(.bottom, 4)
+                    }
+                }
+                .padding()
+            }
+        }
+        .onAppear {
+            output = []
+            let students = Array(1...25).shuffled().sorted()
+            let targets = [students[5], students[10], 999] 
+            
+            for t in targets {
+                _ = binarySearch(list: students, target: t)
+            }
+        }
+    }
+}
+
+            
+            </code></pre>
+          </details>
+
+      
+         </article>
+
+
                 
 
 <article class="card">
@@ -3987,6 +4078,14 @@ allowfullscreen>
 
 
 
+
+     <article class="card">
+          <h3>BINARY SEARCH PROTOCOL Swift Project</h3>
+        <p>
+     First I made a draft pseudocode for my project then I actually made the binary search code with swift playground. The code is trying to find a target value through a list of values.
+        </p>
+     </article>
+
      
 
 <article class="card">
@@ -4044,6 +4143,10 @@ This is a video that shows how the app works. The video shows how the welcome sc
         I made a Medicine Reminder app for people of old age who need to take medicine for their health. There is a start screen for the app and a menu screen. The menu screen consists of option being set schedule, add medicine, summary and exit. I made the app interface easy as possible so everyone can use the app.
         </p>
      </article>
+
+
+
+     
 
 
      
