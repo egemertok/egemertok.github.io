@@ -3163,6 +3163,254 @@ struct ContentView: View {
   <h2>Projects4</h2>
 
 
+
+  
+ <article class="card">
+          <h3>AP CSP Khan Academy Completion</h3>
+        <p>
+  I completed the AP CSP class in Khan Academy.
+        </p>
+  
+    <img 
+    src="https://egemertok.github.io/images/KHAN.png" 
+    alt="Screenshot of my project interface" />
+   
+         </article>
+
+
+
+ <article class="card">
+          <h3>AP CSP Portfolio</h3>
+        <p>
+        This is the app in swift playground for my portfolio project MyBudget Buddy.
+        </p>
+    <img 
+    src="https://egemertok.github.io/images/BB1.png" 
+    alt="Screenshot of my project interface" />
+    <img 
+    src="https://egemertok.github.io/images/BB2.png" 
+    alt="Screenshot of my project interface" />
+    <img 
+    src="https://egemertok.github.io/images/BB3.png" 
+    alt="Screenshot of my project interface" />
+<details>
+  <summary>Show Swift code</summary>
+            <pre><code class="language-swift">
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var isInMenu = false
+    @State private var budgetText = ""
+    @State private var budget: Double = 0
+    @State private var expenseName = ""
+    @State private var expenseAmountText = ""
+    @State private var expenses: [(name: String, amount: Double)] = []
+    
+    enum MenuSection { case main, addExpense, summary }
+    @State private var section: MenuSection = .main
+    
+    var body: some View {
+        ZStack {
+            Color.white.ignoresSafeArea()
+            
+            if isInMenu {
+                menuScreen
+            } else {
+                welcomeScreen
+            }
+        }
+    }
+    
+    var welcomeScreen: some View {
+        VStack(spacing: 16) {
+            Image("Logo")
+            
+            Text("MyBudget Buddy")
+                .foregroundColor(.black)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Button("Start") {
+                isInMenu = true
+                section = .main
+            }
+            .font(.title2)
+            .fontWeight(.bold)
+            .padding()
+            .background(Color.green)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+        }
+    }
+    
+    var menuScreen: some View {
+        VStack(spacing: 16) {
+            switch section {
+                
+            case .main:
+                Text("Budget Tracker Menu")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                
+                Text("Enter budget")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                
+                TextField("Enter", text: $budgetText)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(maxWidth: 260)
+                
+                Button("Save Budget") {
+                    budget = Double(budgetText) ?? 0
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.green)
+                
+                Divider().padding(.vertical, 6)
+                
+                Text("Options")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                
+                Button("Add an Expense") {
+                    section = .addExpense
+                }
+                .buttonStyle(.bordered)
+                .tint(.green)
+                
+                Button("See Summary") {
+                    section = .summary
+                }
+                .buttonStyle(.bordered)
+                .tint(.green)
+                
+                Button("Exit") {
+                    section = .main
+                    isInMenu = false
+                }
+                .buttonStyle(.bordered)
+                .tint(.green)
+                
+            case .addExpense:
+                Text("Add Expense")
+                    .foregroundColor(.black)
+                    .font(.title)
+                    .bold()
+                
+                TextField("Expense name", text: $expenseName)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(maxWidth: 260)
+                
+                TextField("Amount", text: $expenseAmountText)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(maxWidth: 260)
+                
+                Button("Add") {
+                    let amount = Double(expenseAmountText) ?? 0
+                    
+                    if !expenseName.trimmingCharacters(in: .whitespaces).isEmpty && amount > 0 {
+                        expenses.append((expenseName, amount))
+                        expenseName = ""
+                        expenseAmountText = ""
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.blue)
+                
+                Button("Back to Menu") {
+                    section = .main
+                }
+                .buttonStyle(.bordered)
+                
+            case .summary:
+                Text("Summary")
+                    .font(.title)
+                    .foregroundColor(.black)
+                    .bold()
+                
+                Text("Budget: \(budget, specifier: "%.2f")")
+                    .foregroundColor(.black)
+                
+                Text("Total spent: \(calculateTotal(for: expenses, limit: budget), specifier: "%.2f")")
+                    .foregroundColor(.black)
+                
+                expenseListView()
+                
+                Text("Remaining: \(calculateRemaining(budgetAmount: budget, expenseList: expenses), specifier: "%.2f")")
+                    .foregroundColor(.black)
+                
+                Text(budgetMessage(budgetAmount: budget, expenseList: expenses))
+                    .foregroundColor(.black)
+                    .fontWeight(.bold)
+                
+                Button("Back to Menu") {
+                    section = .main
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.green)
+            }
+        }
+        .padding()
+    }
+    
+    func calculateTotal(for expenseList: [(name: String, amount: Double)], limit: Double) -> Double {
+        var total = 0.0
+        
+        for expense in expenseList {
+            if expense.amount > 0 {
+                total += expense.amount
+            }
+        }
+        
+        return total
+    }
+    
+    func calculateRemaining(budgetAmount: Double, expenseList: [(name: String, amount: Double)]) -> Double {
+        return budgetAmount - calculateTotal(for: expenseList, limit: budgetAmount)
+    }
+    
+    func budgetMessage(budgetAmount: Double, expenseList: [(name: String, amount: Double)]) -> String {
+        let remaining = calculateRemaining(budgetAmount: budgetAmount, expenseList: expenseList)
+        
+        if remaining < 0 {
+            return "You are over budget."
+        } else {
+            return "You are within budget."
+        }
+    }
+    
+    func expenseListView() -> some View {
+        List {
+            ForEach(expenses.indices, id: \.self) { index in
+                HStack {
+                    Text(expenses[index].name)
+                    Spacer()
+                    Text("\(expenses[index].amount, specifier: "%.2f")")
+                }
+            }
+        }
+        .frame(height: 200)
+    }
+}
+
+              
+            </code></pre>
+          </details>
+         </article>
+
+
+
+
+
+
+
+
+
+
+  
+
   <article class="card">
           <h3>AP CSP Final Project/MathTacToe</h3>
         <p>
@@ -3470,7 +3718,6 @@ func resetRound() {
             </code></pre>
           </details>
          </article>
-
 
 
 
@@ -4485,8 +4732,24 @@ This is a video that shows how the app works. The video shows how the welcome sc
        
    <section id="documentation4" class="page" data-title="Documentation4 — Ege Mert OK">
       <h2>Documentation4</h2>
+ <article class="card">
+          <h3>AP CSP Khan Academy Completion</h3>
+        <p>
+  Completion of the AP CSP Khan Academy
+        </p>
+ </article>
+
+<article class="card">
+          <h3>AP CSP Portfolio </h3>
+        <p>
+       A budget tracker app I made to use in my AP CSP exam.
+        </p>
+   
+ </article>
 
 
+
+     
      <article class="card">
           <h3>AP CSP Final Project/MathTacToe</h3>
         <p>
